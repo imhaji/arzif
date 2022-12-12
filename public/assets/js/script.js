@@ -1,6 +1,14 @@
-let Item = window.document.querySelector('#Item');
-let Operation = window.document.querySelector('#Operation');
+// let Items = window.document.querySelectorAll('.Items');
+// let Operation = window.document.querySelector('#Operation');
 
-Item.addEventListener('click', () => {
-    Operation.style.display = 'block'
+// Items.forEach(function(item) {
+    
+//     item.addEventListener('click', () => {
+//         item.children[1].style.display = 'block'    
+//     })
+
+// })
+
+$('.Items').on('click', function() {
+    $(this).find('.Operation').toggleClass('d-block');
 })

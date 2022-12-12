@@ -13,7 +13,9 @@
 </head>
 
 <body class="d-flex justify-content-center align-content-center mt-1">
-    <section class="app">
+    <section class="position-relative">
+        <div class="app">
+            
         <h1 class="fs-6 text-center mt-2">ارزیف واچ</h1>
         @if (!$data)
 
@@ -24,7 +26,7 @@
             </div>
         @else
             @foreach ($data as $data_coin)
-                <div class="bg-white rounded mx-2 mt-5 p-3">
+                <div class="bg-white rounded mx-2 my-4 p-3">
                     <h6 style="font-size: 14px" class="text-center">{{ $data_coin['wallet'] }}</h6>
                     <div class="d-flex justify-content-between mt-3">
                         <span>{{ $data_coin['balance'] }}$</span>
@@ -32,32 +34,55 @@
                     </div>
                     <div class="row mt-2" dir="ltr">
                         <!-- itme -->
-                        <div class="mt-2 d-flex justify-content-between align-items-center">
+                        <div class="mt-2">
 
                             @switch($data_coin['network'])
                                 @case('BEP2')
-                                    <div class="d-flex">
-
+                                    <div class="d-flex justify-content-between">
                                         <div class="ms-1">
                                             @foreach (collect($data_coin['coins'])->take(10) as $coin)
                                                 <span class="d-block" style="font-size: 12px;">{{ $coin['symbol'] }}</span>
                                                 <span class="d-block" style="font-size: 10px;">{{ $coin['free'] }}</span>
                                             @endforeach
                                         </div>
+                                        <div class="border-0 bg-white position-relative Items">
+                                            <img src="{{ asset('assets/img/more.png') }}">
+                                            <div class="Operation">
+                                                <a class="d-block text-decoration-none">ویرایش</a>
+                                                <form action="{{ route('wallets.destroy',['wallet'=>$data_coin['id']]) }}" method="Post">
+                                                    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                <button href="" class="d-block border-0 bg-white text-danger">حذف</button>
+                                            </form>
+                                            </div>
+                                        </div>
+                                       
                                     </div>
                                 @break
 
                                 @case('BEP20')
-                                    <div class="d-flex">
+                                    <div class="d-flex justify-content-between">
                                         <div class="ms-1">
                                             <span class="d-block" style="font-size: 12px;">{{ $data_coin['coin'] }}</span>
                                             <span class="d-block" style="font-size: 10px;">{{ $data_coin['balance'] }}</span>
                                         </div>
+                                        <div class="border-0 bg-white position-relative Items">
+                                            <img src="{{ asset('assets/img/more.png') }}">
+                                            <div class="Operation">
+                                                <a class="d-block text-decoration-none">ویرایش</a>
+                                                <form action="{{ route('wallets.destroy',['wallet'=>$data_coin['id']]) }}" method="Post">
+                                                    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                <button href="" class="d-block border-0 bg-white text-danger">حذف</button>
+                                            </form>
+                                            </div>
+                                        </div>
+                                       
                                     </div>
                                 @break
 
                                 @case('TRC20')
-                                    <div class="d-flex">
+                                    <div class="d-flex justify-content-between">
                                         <div class="ms-1">
                                             @foreach (collect($data_coin['coins'])->take(10) as $coin)
                                                 <div>
@@ -67,62 +92,158 @@
                                                 <span class="d-block" style="font-size: 10px;">{{ $coin['balance'] }}</span>
                                             @endforeach
                                         </div>
+                                        <div class="border-0 bg-white position-relative Items">
+                                            <img src="{{ asset('assets/img/more.png') }}">
+                                            <div class="Operation">
+                                                <a class="d-block text-decoration-none">ویرایش</a>
+                                                <form action="{{ route('wallets.destroy',['wallet'=>$data_coin['id']]) }}" method="Post">
+                                                    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                <button href="" class="d-block border-0 bg-white text-danger">حذف</button>
+                                            </form>
+                                            </div>
+                                        </div>
+                                       
                                     </div>
                                 @break
                                 @case('DOGE')
-                                <div class="d-flex">
+                                <div class="d-flex justify-content-between">
                                     <div class="ms-1">
                                         <span class="d-block" style="font-size: 12px;">{{ $data_coin['coin'] }}</span>
                                         <span class="d-block" style="font-size: 10px;">{{ $data_coin['balance'] }}</span>
                                     </div>
+                                    <div class="border-0 bg-white position-relative Items">
+                                        <img src="{{ asset('assets/img/more.png') }}">
+                                        <div class="Operation">
+                                            <a class="d-block text-decoration-none">ویرایش</a>
+                                            <form action="{{ route('wallets.destroy',['wallet'=>$data_coin['id']]) }}" method="Post">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                            <button href="" class="d-block border-0 bg-white text-danger">حذف</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 @break
                                 @case('ERC20')
-                                <div class="d-flex">
+                                <div class="d-flex justify-content-between">
                                     <div class="ms-1">
                                         <span class="d-block" style="font-size: 12px;">{{ $data_coin['coin'] }}</span>
                                         <span class="d-block" style="font-size: 10px;">{{ $data_coin['balance'] }}</span>
                                     </div>
+                                    <div class="border-0 bg-white position-relative Items">
+                                        <img src="{{ asset('assets/img/more.png') }}">
+                                        <div class="Operation">
+                                            <a class="d-block text-decoration-none">ویرایش</a>
+                                            <form action="{{ route('wallets.destroy',['wallet'=>$data_coin['id']]) }}" method="Post">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                            <button href="" class="d-block border-0 bg-white text-danger">حذف</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                  
                                 </div>
                                 @break
                                 @case('XRP')
-                                <div class="d-flex">
+                                <div class="d-flex justify-content-between">
                                     <div class="ms-1">
                                         <span class="d-block" style="font-size: 12px;">{{ $data_coin['coin'] }}</span>
                                         <span class="d-block" style="font-size: 10px;">{{ $data_coin['balance'] }}</span>
                                     </div>
+                                    <div class="border-0 bg-white position-relative Items">
+                                        <img src="{{ asset('assets/img/more.png') }}">
+                                        <div class="Operation">
+                                            <a class="d-block text-decoration-none">ویرایش</a>
+                                            <form action="{{ route('wallets.destroy',['wallet'=>$data_coin['id']]) }}" method="Post">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                            <button href="" class="d-block border-0 bg-white text-danger">حذف</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                   
                                 </div>
                                 @break
                                 @case('BTC')
-                                <div class="d-flex">
+                                <div class="d-flex justify-content-between">
                                     <div class="ms-1">
                                         <span class="d-block" style="font-size: 12px;">{{ $data_coin['coin'] }}</span>
                                         <span class="d-block" style="font-size: 10px;">{{ $data_coin['balance'] }}</span>
                                     </div>
+                                    <div class="border-0 bg-white position-relative Items">
+                                        <img src="{{ asset('assets/img/more.png') }}">
+                                        <div class="Operation">
+                                            <a class="d-block text-decoration-none">ویرایش</a>
+                                            <form action="{{ route('wallets.destroy',['wallet'=>$data_coin['id']]) }}" method="Post">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                            <button href="" class="d-block border-0 bg-white text-danger">حذف</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                   
                                 </div>
                                 @break
                                 @case('BCH')
-                                <div class="d-flex">
+                                <div class="d-flex justify-content-between">
                                     <div class="ms-1">
                                         <span class="d-block" style="font-size: 12px;">{{ $data_coin['coin'] }}</span>
                                         <span class="d-block" style="font-size: 10px;">{{ $data_coin['balance'] }}</span>
                                     </div>
+                                    <div class="border-0 bg-white position-relative Items">
+                                        <img src="{{ asset('assets/img/more.png') }}">
+                                        <div class="Operation">
+                                            <a class="d-block text-decoration-none">ویرایش</a>
+                                            <form action="{{ route('wallets.destroy',['wallet'=>$data_coin['id']]) }}" method="Post">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                            <button href="" class="d-block border-0 bg-white text-danger">حذف</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 @break
                                 @case('LTC')
-                                <div class="d-flex">
+                                <div class="d-flex justify-content-between">
                                     <div class="ms-1">
                                         <span class="d-block" style="font-size: 12px;">{{ $data_coin['coin'] }}</span>
                                         <span class="d-block" style="font-size: 10px;">{{ $data_coin['balance'] }}</span>
                                     </div>
+                                    <div class="border-0 bg-white position-relative Items">
+                                        <img src="{{ asset('assets/img/more.png') }}">
+                                        <div class="Operation">
+                                            <a class="d-block text-decoration-none">ویرایش</a>
+                                            <form action="{{ route('wallets.destroy',['wallet'=>$data_coin['id']]) }}" method="Post">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                            <button href="" class="d-block border-0 bg-white text-danger">حذف</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                   
                                 </div>
                                 @break
                                 @case('DASH')
-                                <div class="d-flex">
+                                <div class="d-flex justify-content-between">
                                     <div class="ms-1">
                                         <span class="d-block" style="font-size: 12px;">{{ $data_coin['coin'] }}</span>
                                         <span class="d-block" style="font-size: 10px;">{{ $data_coin['balance'] }}</span>
                                     </div>
+                                    <div class="border-0 bg-white position-relative items Items">
+                                        <img src="{{ asset('assets/img/more.png') }}">
+                                        <div class="Operation">
+                                            <a class="d-block text-decoration-none">ویرایش</a>
+                                            <form action="{{ route('wallets.destroy',['wallet'=>$data_coin['id']]) }}" method="Post">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                            <button href="" class="d-block border-0 bg-white text-danger">حذف</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 @break
 
@@ -130,19 +251,9 @@
                             @endswitch
 
 
-                            <div id="Item" class="border-0 bg-white position-relative">
-                                <img src="{{ asset('assets/img/more.png') }}">
-                                <div id="Operation">
-                                    <a class="d-block">ویرایش</a>
-                                    <form action="{{ route('wallets.destroy',['wallet'=>$data_coin['id']]) }}" method="Post">
-                                        {{ method_field('DELETE') }}
-                                        {{ csrf_field() }}
-                                    <button href="" class="d-block text-danger">حذف</button>
-                                </form>
-                                </div>
-                            </div>
+                            
                         </div>
-                        <!-- end item -->
+                       
                     </div>
                 </div>
             @endforeach
@@ -182,7 +293,10 @@
                 </div>
             </div>
         </div>
+        </div>
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
 </body>
