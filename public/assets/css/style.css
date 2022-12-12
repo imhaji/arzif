@@ -1,0 +1,36 @@
+.app {
+    background-color: #f0eaea;
+    width: 360px;
+    height: 600px;
+    position: relative;
+}
+.null-item {
+    margin-top: 15rem;
+}
+.add-item {
+    position: absolute;
+    right: 16px;
+    bottom: 13px;
+}
+.add-item img {
+    background: #F2A922;
+    box-shadow: 0px 0px 31px rgba(0, 0, 0, 0.06);
+    border-radius: 50%;
+    padding: 8px;
+}
+.submit-button {
+    background: #F2A922;
+    width: 100%;
+    border: none;
+    color: white;
+    padding: 7px 0px;
+}
+#Operation {
+    display: none;
+    position: absolute;
+    top: 23px;
+    left: -20px;
+    background: white;
+    padding: 4px 10px;
+    border-radius: 10px;
+}

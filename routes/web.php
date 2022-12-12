@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/',function(){
+    return redirect()->route('wallets.index');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::resource('wallets', WalletController::class)->except(['show']);
 });

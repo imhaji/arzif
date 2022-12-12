@@ -23,8 +23,8 @@ class WalletController extends Controller
         foreach ($wallets as $wallet) {
             $data[$wallet->id] = $wallet->getData();
         }
-
-        return response()->json($data);
+        // dd($data)
+        return view('index',compact('data'));
     }
 
 
@@ -36,16 +36,17 @@ class WalletController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request,[
-            'wallet'=>$request->wallet,
-            'network'=>$request->network,
+            'wallet'=>'required',
+            'network'=>'required',
         ]);
         Wallet::create([
             'user_id'=>Auth::id(),
             'wallet'=>$request->wallet,
             'network'=>$request->network
         ]);
-        return response()->json(['message'=>"کیف پول شما با موفقیت ذخیره شد"],200);
+        return redirect()->back();
     }
 
     /**
@@ -56,7 +57,7 @@ class WalletController extends Controller
      */
     public function edit($id ,WalletRepository $wallet)
     {
-        
+
         return response()->json(['wallet'=>$wallet],200);
     }
 
@@ -91,6 +92,6 @@ class WalletController extends Controller
     public function destroy($id , WalletRepository $wallet)
     {
         $wallet->getWallet($id)->delete();
-             return response()->json(['message'=>"کیف پول با موفقیت حذف شد "],200);
+             return redirect()->back();
     }
 }
